@@ -1,0 +1,34 @@
+{
+  "name": "action-matchers",
+  "version": "0.0.1",
+  "description": "A function that accepts a matcher(s) and tells if Redux action matches those",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ralekna/action-matchers.git"
+  },
+  "keywords": [
+    "redux",
+    "action",
+    "actions",
+    "matcher",
+    "match",
+    "reducer"
+  ],
+  "author": "Rytis Alekna <r.alekna@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ralekna/action-matchers/issues"
+  },
+  "homepage": "https://github.com/ralekna/action-matchers#readme",
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.4.7",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
+  }
+}
