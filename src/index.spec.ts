@@ -67,6 +67,13 @@ describe(`action-matchers unit tests`, () => {
         expect(matchNone(action)).toBeFalsy();
       }
     );
+    
+    it(`should match no action if empty array of matchers supplied`, () => {
+      const matchNone = createMatcher();
+      expect(matchNone(withMeta)).toBeFalsy();
+      expect(matchNone(passingAction)).toBeFalsy();
+
+    })
 
     it(`should match only those action that has [meta] field with custom mathing function`, () => {
       const matchOnlyWithMeta = createMatcher(
