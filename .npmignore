@@ -1,0 +1,10 @@
+/coverage
+/.gitignore
+/node_modules
+/jest.config
+
+# Logs
+logs
+*.log
+npm-debug.log*
+.npm
