@@ -1,6 +1,6 @@
 {
   "name": "action-matchers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A function that accepts a matcher(s) and tells if Redux action matches those",
   "main": "dist/index.js",
   "scripts": {
