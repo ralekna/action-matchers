@@ -82,19 +82,23 @@ export const matchAndReduce = <TState>(
   };
 };
 
-export const createReducer =
-  <TState>(matchersWithReducers: (Reducer<TState> | [...MatcherConfig[], Reducer<TState>] )[], initialState: TState) =>
-  {
-    const preparedReducers: Reducer<TState>[] = matchersWithReducers.map((entry) => {
+export const createReducer = <TState>(
+  matchersWithReducers: (
+    | Reducer<TState>
+    | [...MatcherConfig[], Reducer<TState>]
+  )[],
+  initialState: TState
+) => {
+  const preparedReducers: Reducer<TState>[] = matchersWithReducers.map(
+    (entry) => {
       if (Array.isArray(entry)) {
         const matcherConfig = entry.slice(0, -1) as MatcherConfig[];
         const reducer = entry[entry.length - 1] as Reducer<TState>;
         return matchAndReduce(matcherConfig, reducer);
       }
       return entry;
-    });
-    return (state: TState = initialState, action: unknown): TState => preparedReducers.reduce(
-        (state, reducer) => reducer(state, action),
-        state
-      );
-    };
+    }
+  );
+  return (state: TState = initialState, action: unknown): TState =>
+    preparedReducers.reduce((state, reducer) => reducer(state, action), state);
+};

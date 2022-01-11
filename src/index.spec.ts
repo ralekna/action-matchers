@@ -67,13 +67,12 @@ describe(`action-matchers unit tests`, () => {
         expect(matchNone(action)).toBeFalsy();
       }
     );
-    
+
     it(`should match no action if empty array of matchers supplied`, () => {
       const matchNone = createMatcher();
       expect(matchNone(withMeta)).toBeFalsy();
       expect(matchNone(passingAction)).toBeFalsy();
-
-    })
+    });
 
     it(`should match only those action that has [meta] field with custom mathing function`, () => {
       const matchOnlyWithMeta = createMatcher(
@@ -199,7 +198,6 @@ describe(`action-matchers unit tests`, () => {
     type SetTemperature = ReturnType<typeof setTemperature>;
 
     it(`should create a reducer that passes state to reducers from top to bottom`, () => {
-
       const metricsReducer = createReducer<State>(
         [
           matchAndReduce<State>(
@@ -240,33 +238,32 @@ describe(`action-matchers unit tests`, () => {
         count: 0,
         temperature: "3C",
         numberOfCalls: 1,
-        numberOfCallsWithSecretString: 0
+        numberOfCallsWithSecretString: 0,
       });
       resultState = metricsReducer(resultState, increaseCount(3));
       expect(resultState).toStrictEqual({
         count: 3,
         temperature: "3C",
         numberOfCalls: 2,
-        numberOfCallsWithSecretString: 0
+        numberOfCallsWithSecretString: 0,
       });
       resultState = metricsReducer(resultState, ping());
       expect(resultState).toStrictEqual({
         count: 3,
         temperature: "3C",
         numberOfCalls: 3,
-        numberOfCallsWithSecretString: 1
+        numberOfCallsWithSecretString: 1,
       });
       resultState = metricsReducer(resultState, signSecretly());
       expect(resultState).toStrictEqual({
         count: 3,
         temperature: "3C",
         numberOfCalls: 3,
-        numberOfCallsWithSecretString: 2
+        numberOfCallsWithSecretString: 2,
       });
     });
 
     it(`should create a reducer by using easier setup`, () => {
-
       const metricsReducer = createReducer<State>(
         [
           [
@@ -310,28 +307,28 @@ describe(`action-matchers unit tests`, () => {
         count: 0,
         temperature: "3C",
         numberOfCalls: 1,
-        numberOfCallsWithSecretString: 0
+        numberOfCallsWithSecretString: 0,
       });
       resultState = metricsReducer(resultState, increaseCount(3));
       expect(resultState).toStrictEqual({
         count: 3,
         temperature: "3C",
         numberOfCalls: 2,
-        numberOfCallsWithSecretString: 0
+        numberOfCallsWithSecretString: 0,
       });
       resultState = metricsReducer(resultState, ping());
       expect(resultState).toStrictEqual({
         count: 3,
         temperature: "3C",
         numberOfCalls: 3,
-        numberOfCallsWithSecretString: 1
+        numberOfCallsWithSecretString: 1,
       });
       resultState = metricsReducer(resultState, signSecretly());
       expect(resultState).toStrictEqual({
         count: 3,
         temperature: "3C",
         numberOfCalls: 3,
-        numberOfCallsWithSecretString: 2
+        numberOfCallsWithSecretString: 2,
       });
     });
   });
